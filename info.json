@@ -1,0 +1,13 @@
+{
+    "name": "tinted-spaceship",
+    "version": "1.0.1",
+    "title": "Tinted Spaceship",
+    "author": "Maxreader",
+    "contact": "",
+    "homepage": "",
+    "factorio_version": "1.0",
+    "dependencies": [
+        "base >= 1.0"
+    ],
+    "description": "Tints the spaceship and crash site debris to match the player's color."
+}
