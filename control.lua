@@ -5,8 +5,8 @@ local crash_site_objects = {
     "crash-site-spaceship-wreck-small-5", "crash-site-spaceship-wreck-small-6"
 }
 
-local function initialize_crash_site(event)
-    local player = game.get_player(event.player_index)
+local function initialize_crash_site(player_index)
+    local player = game.get_player(player_index)
     local playerForce = player and player.force or "player"
     -- Find all objects to be tinted, and spawn the respective tint entity on top
     global.registered_objects = global.registered_objects or {}
@@ -41,7 +41,9 @@ local function initialize_crash_site(event)
 end
 
 script.on_event(defines.events.on_player_created, function(event)
-    if not global.crash_site_created then initialize_crash_site(event) end
+    if not global.crash_site_created then
+        initialize_crash_site(event.player_index)
+    end
 end)
 
 script.on_event(defines.events.on_entity_destroyed, function(event)
@@ -50,3 +52,9 @@ script.on_event(defines.events.on_entity_destroyed, function(event)
         global.registered_objects[ID].destroy()
     end
 end)
+
+local function manual_initialization(args)
+    initialize_crash_site(args.player_index)
+end
+
+commands.add_command("recolor-crash-site", "", manual_initialization)

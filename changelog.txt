@@ -1,0 +1,7 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.01
+Date: ????
+  Features:
+    - Command to re-color the crash site if it was incorrect before this update. /recolor-crash-site
+  Bugfixes:
+    - More robust player color detection
